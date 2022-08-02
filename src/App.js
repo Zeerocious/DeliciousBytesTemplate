@@ -1,10 +1,32 @@
-import { Typography, Box } from "@mui/material"
+import { Typography, Box, TextField} from "@mui/material";
 
 function App() {
   return (
-    <Box sx= {{display: "flex", flexDirection: "column"}}>
-      <Typography variant="header"> CONTACT US </Typography>
-      <Typography variant="subheader"> DROP US A LINE AND WE'LL GET BACK TO YOU </Typography>
+    <Box
+      sx={{
+        position: "absolute",
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <Box
+        sx={{ display: "flex", flexDirection: "column", padding: 1, maxWidth: 420, width: "100%", height: "100%"}}
+      >
+        <Typography variant="header"> CONTACT US </Typography>
+        <Typography variant="subheader">
+          DROP US A LINE AND WE'LL GET BACK TO YOU
+        </Typography>
+        <Box sx={{width: "100%", display: "flex", mt: 2, justifyContent: "space-around",}}>
+          <TextField required label="First Name" variant="standard"></TextField>
+          <TextField sx={{width: 170,}} required label="Last Name" variant="standard"></TextField>
+        </Box>
+      </Box>
+      
     </Box>
   );
 }

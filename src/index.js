@@ -14,17 +14,30 @@ let theme = createTheme({
   },
   typography: {
     header: {
+      fontFamily: [
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+      ].join(','),
       marginTop: "1.4rem",
-      padding: 6,
       fontWeight: 700,
       fontSize: "2rem"
     },
     subheader: {
       marginTop: "1.4rem",
-      padding: 6,
-      fontWeight: 500,
+      fontFamily: "Helvetica Neue",
+      fontWeight: 400,
     },
     info: {
+      marginTop: "1.4rem",
+      fontFamily: "Helvetica Neue",
       fontWeight: 300,
     }
   }
