@@ -1,6 +1,25 @@
-import { Typography, Box, TextField} from "@mui/material";
+import { Typography, Box, TextField, Button } from "@mui/material";
+import { useState } from "react";
 
 function App() {
+  const [phoneNumber, setPhoneNumber] = useState(() => {
+    return "510-709-9999";
+  });
+  const [email, setEmail] = useState(() => {
+    return "support@deliciousbytes.io";
+  });
+  const [weekdayStart, setWeekdayStart] = useState(() => {
+    return "10:00AM";
+  });
+  const [weekdayEnd, setWeekdayEnd] = useState(() => {
+    return "11:00PM";
+  });
+  const [weekendStart, setWeekendStart] = useState(() => {
+    return "11:00AM";
+  });
+  const [weekendEnd, setWeekendEnd] = useState(() => {
+    return "12:00AM";
+  });
   return (
     <Box
       sx={{
@@ -15,18 +34,95 @@ function App() {
       }}
     >
       <Box
-        sx={{ display: "flex", flexDirection: "column", padding: 1, maxWidth: 420, width: "100%", height: "100%"}}
+        sx={{
+          display: "flex",
+          justifyContent: "space-around",
+          width: "100%",
+          height: "100%",
+        }}
       >
-        <Typography variant="header"> CONTACT US </Typography>
-        <Typography variant="subheader">
-          DROP US A LINE AND WE'LL GET BACK TO YOU
-        </Typography>
-        <Box sx={{width: "100%", display: "flex", mt: 2, justifyContent: "space-around",}}>
-          <TextField required label="First Name" variant="standard"></TextField>
-          <TextField sx={{width: 170,}} required label="Last Name" variant="standard"></TextField>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            padding: 1,
+            maxWidth: 420,
+            width: "100%",
+            height: "100%",
+            mt:2
+          }}
+        >
+          <Typography variant="header"> CONTACT US </Typography>
+          <Typography sx={{mt:2}} variant="subheader">
+            Drop us a line and we'll get back to you
+          </Typography>
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              mt: 2,
+              justifyContent: "space-around",
+            }}
+          >
+            <TextField label="First Name" variant="standard"></TextField>
+            <TextField label="Last Name" variant="standard"></TextField>
+          </Box>
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              mt: 2,
+              justifyContent: "space-around",
+            }}
+          >
+            <TextField required label="Email" variant="standard"></TextField>
+            <TextField label="Subject" variant="standard"></TextField>
+          </Box>
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              mt: 2,
+              justifyContent: "space-around",
+              alignItems: "end",
+            }}
+          >
+            <TextField
+              sx={{ width: 270 }}
+              multiline
+              required
+              rows={3}
+              label="Leave us a message..."
+              variant="standard"
+            ></TextField>
+            <Button sx={{ height: 50 }} variant="contained">
+              Submit
+            </Button>
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            padding: 1,
+            mt: 2
+          }}
+        >
+          <Typography variant="header"> WE'RE OPEN! </Typography>
+          <Box sx={{display: "flex", flexDirection: "column", mt: 8 }}>
+            <Typography variant="info">
+              {`Monday-Friday: ${weekdayStart}-${weekdayEnd}`}
+            </Typography>
+            <Typography variant="info">
+              {`Saturday-Sunday: ${weekendStart}-${weekendEnd}`}
+            </Typography>
+          </Box>
+          <Box sx={{ display: "flex", flexDirection: "column", mt: 8 }}>
+            <Typography variant="info">{`Tel: ${phoneNumber}`}</Typography>
+            <Typography variant="info">{`Email: ${email}`}</Typography>
+          </Box>
         </Box>
       </Box>
-      
     </Box>
   );
 }
