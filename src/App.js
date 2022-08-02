@@ -1,12 +1,11 @@
-import { Typography } from "@mui/material"
+import { Typography, Box } from "@mui/material"
 
 function App() {
   return (
-    <box>
-      <Typography variant="header"> CHICKEN SANDWICH </Typography>
-      <Typography variant="item"> Classic Chicken Sandwich </Typography>
-      <Typography variant="description"> Our Delicious Crispy fried chicken sandwich, served with American Cheese, 2 Brioche Sliders, Pickles, Coleslaw, Spicy Mayo, and with Chef’s Quality Fries on the side </Typography>
-    </box>
+    <Box sx= {{display: "flex", flexDirection: "column"}}>
+      <Typography variant="header"> CONTACT US </Typography>
+      <Typography variant="subheader"> DROP US A LINE AND WE'LL GET BACK TO YOU </Typography>
+    </Box>
   );
 }
 

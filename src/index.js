@@ -3,8 +3,10 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider, createTheme, CssBaseline, responsiveFontSizes } from "@mui/material";
-
-
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 let theme = createTheme({
   palette: {
@@ -12,21 +14,18 @@ let theme = createTheme({
   },
   typography: {
     header: {
-      display: "block",
+      marginTop: "1.4rem",
       padding: 6,
-      fontWeight: 800,
+      fontWeight: 700,
       fontSize: "2rem"
     },
-    item: {
-      display: "block",
-      padding: 2,
-      fontWeight: 800,
-      fontSize: "1rem"
+    subheader: {
+      marginTop: "1.4rem",
+      padding: 6,
+      fontWeight: 500,
     },
-    description: {
-      display: "block",
+    info: {
       fontWeight: 300,
-      fontSize: "1rem"
     }
   }
 });
