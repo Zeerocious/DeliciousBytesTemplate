@@ -1,9 +1,13 @@
 import { Typography, Box, TextField, Button } from "@mui/material";
+import { type } from "@testing-library/user-event/dist/type";
 import { useState } from "react";
+import site from "./website.json"
+console.log(site);
+
 
 function App() {
   const [phoneNumber, setPhoneNumber] = useState(() => {
-    return "510-709-9999";
+    return "data";
   });
   const [email, setEmail] = useState(() => {
     return "support@deliciousbytes.io";
