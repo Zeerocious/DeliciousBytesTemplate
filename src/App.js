@@ -1,29 +1,20 @@
 import { Typography, Box, TextField, Button } from "@mui/material";
-import { type } from "@testing-library/user-event/dist/type";
 import { useState } from "react";
 import site from "./website.json"
-console.log(site);
-
-
+console.log(site)
 function App() {
   const [phoneNumber, setPhoneNumber] = useState(() => {
-    return "data";
+    return site.ContactUs[0].tel;
   });
   const [email, setEmail] = useState(() => {
-    return "support@deliciousbytes.io";
+    return site.ContactUs[0].email;
   });
-  const [weekdayStart, setWeekdayStart] = useState(() => {
-    return "10:00AM";
+  const [firstOpen, setWeekdayStart] = useState(() => {
+    return site.ContactUs[0].firstopen;
   });
-  const [weekdayEnd, setWeekdayEnd] = useState(() => {
-    return "11:00PM";
-  });
-  const [weekendStart, setWeekendStart] = useState(() => {
-    return "11:00AM";
-  });
-  const [weekendEnd, setWeekendEnd] = useState(() => {
-    return "12:00AM";
-  });
+  const [secondOpen, setWeekdayEnd] = useState(() => {
+    return site.ContactUs[0].secondopen;
+  })
   return (
     <Box
       sx={{
@@ -115,10 +106,10 @@ function App() {
           <Typography variant="header"> WE'RE OPEN! </Typography>
           <Box sx={{display: "flex", flexDirection: "column", mt: 8 }}>
             <Typography variant="info">
-              {`Monday-Friday: ${weekdayStart}-${weekdayEnd}`}
+              {`${firstOpen}`}
             </Typography>
             <Typography variant="info">
-              {`Saturday-Sunday: ${weekendStart}-${weekendEnd}`}
+              {`${secondOpen}`}
             </Typography>
           </Box>
           <Box sx={{ display: "flex", flexDirection: "column", mt: 8 }}>

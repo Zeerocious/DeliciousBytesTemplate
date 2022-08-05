@@ -80,8 +80,8 @@
         {
             "tel": "510-709-9999",
             "email": "support@deliciousbytes.io",
-            "mondayfriday": "11am-10:pm",
-            "saturdaysunday": "11:am-12am"
+            "firstopen": "Monday-Friday: 11am-10:pm",
+            "secondopen": "Saturday-Sunday: 11am-12am"
         }
     ]
 }
