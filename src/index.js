@@ -9,6 +9,15 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 let theme = createTheme({
+  components: {
+    MuiInputBase: {
+        styleOverrides: {
+            input: {
+                fontWeight: 300,
+            }
+        }
+    }
+  },
   palette: {
     mode: "dark",
   },

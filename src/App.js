@@ -1,18 +1,29 @@
-import { Typography, Box, TextField, Button } from "@mui/material";
+import { Typography, Box, TextField, Button, makeStyles } from "@mui/material";
 import { useState } from "react";
 import site from "./website.json"
 console.log(site)
+
+/*const useStyles = makeStyles({
+  input: {
+    color: "blue"
+  }
+});*/
+
 function App() {
+ // const [classes, setClasses] = makeStyles(() => {
+ //   return input: {color: "blue"}
+ // });
+  //const classes = useStyles();
   const [phoneNumber, setPhoneNumber] = useState(() => {
     return site.ContactUs[0].tel;
   });
   const [email, setEmail] = useState(() => {
     return site.ContactUs[0].email;
   });
-  const [firstOpen, setWeekdayStart] = useState(() => {
+  const [firstOpen, setFirstOpen] = useState(() => {
     return site.ContactUs[0].firstopen;
   });
-  const [secondOpen, setWeekdayEnd] = useState(() => {
+  const [secondOpen, setSecondOpen] = useState(() => {
     return site.ContactUs[0].secondopen;
   })
   return (
@@ -59,8 +70,8 @@ function App() {
               justifyContent: "space-around",
             }}
           >
-            <TextField label="First Name" variant="standard"></TextField>
-            <TextField label="Last Name" variant="standard"></TextField>
+            <TextField  label="First Name" variant="standard"></TextField>
+            <TextField  label="Last Name" variant="standard"></TextField>
           </Box>
           <Box
             sx={{
