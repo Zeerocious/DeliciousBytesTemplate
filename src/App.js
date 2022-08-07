@@ -1,31 +1,12 @@
-import { Typography, Box, TextField, Button, makeStyles } from "@mui/material";
+import { Typography, Box, TextField, Button } from "@mui/material";
 import { useState } from "react";
-import site from "./website.json"
-console.log(site)
-
-/*const useStyles = makeStyles({
-  input: {
-    color: "blue"
-  }
-});*/
+import website from "./website.json";
+console.log(website);
 
 function App() {
- // const [classes, setClasses] = makeStyles(() => {
- //   return input: {color: "blue"}
- // });
-  //const classes = useStyles();
-  const [phoneNumber, setPhoneNumber] = useState(() => {
-    return site.ContactUs[0].tel;
+  const [site, setSite] = useState(() => {
+    return website;
   });
-  const [email, setEmail] = useState(() => {
-    return site.ContactUs[0].email;
-  });
-  const [firstOpen, setFirstOpen] = useState(() => {
-    return site.ContactUs[0].firstopen;
-  });
-  const [secondOpen, setSecondOpen] = useState(() => {
-    return site.ContactUs[0].secondopen;
-  })
   return (
     <Box
       sx={{
@@ -39,95 +20,101 @@ function App() {
         flexDirection: "column",
       }}
     >
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-around",
-          width: "100%",
-          height: "100%",
-        }}
-      >
+      <Box>
         <Box
           sx={{
             display: "flex",
-            flexDirection: "column",
-            padding: 1,
-            maxWidth: 420,
+            justifyContent: "space-around",
             width: "100%",
             height: "100%",
-            mt:2
           }}
         >
-          <Typography variant="header"> CONTACT US </Typography>
-          <Typography sx={{mt:2}} variant="subheader">
-            Drop us a line and we'll get back to you
-          </Typography>
           <Box
             sx={{
-              width: "100%",
               display: "flex",
+              flexDirection: "column",
+              padding: 1,
+              maxWidth: 420,
+              width: "100%",
+              height: "100%",
               mt: 2,
-              justifyContent: "space-around",
             }}
           >
-            <TextField  label="First Name" variant="standard"></TextField>
-            <TextField  label="Last Name" variant="standard"></TextField>
+            <Typography variant="header"> CONTACT US </Typography>
+            <Typography sx={{ mt: 2 }} variant="subheader">
+              Drop us a line and we'll get back to you
+            </Typography>
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                mt: 2,
+                justifyContent: "space-around",
+              }}
+            >
+              <TextField label="First Name" variant="standard"></TextField>
+              <TextField label="Last Name" variant="standard"></TextField>
+            </Box>
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                mt: 2,
+                justifyContent: "space-around",
+              }}
+            >
+              <TextField required label="Email" variant="standard"></TextField>
+              <TextField label="Subject" variant="standard"></TextField>
+            </Box>
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                mt: 2,
+                justifyContent: "space-around",
+                alignItems: "end",
+              }}
+            >
+              <TextField
+                sx={{ width: 270 }}
+                multiline
+                required
+                rows={3}
+                label="Leave us a message..."
+                variant="standard"
+              ></TextField>
+              <Button sx={{ height: 50 }} variant="contained">
+                Submit
+              </Button>
+            </Box>
           </Box>
           <Box
             sx={{
-              width: "100%",
               display: "flex",
+              flexDirection: "column",
+              padding: 1,
               mt: 2,
-              justifyContent: "space-around",
             }}
           >
-            <TextField required label="Email" variant="standard"></TextField>
-            <TextField label="Subject" variant="standard"></TextField>
-          </Box>
-          <Box
-            sx={{
-              width: "100%",
-              display: "flex",
-              mt: 2,
-              justifyContent: "space-around",
-              alignItems: "end",
-            }}
-          >
-            <TextField
-              sx={{ width: 270 }}
-              multiline
-              required
-              rows={3}
-              label="Leave us a message..."
-              variant="standard"
-            ></TextField>
-            <Button sx={{ height: 50 }} variant="contained">
-              Submit
-            </Button>
+            <Typography variant="header"> WE'RE OPEN! </Typography>
+            <Box sx={{ display: "flex", flexDirection: "column", mt: 8 }}>
+              <Typography variant="info">
+                {`${site.ContactUs[0].firstopen}`}
+              </Typography>
+              <Typography variant="info">
+                {`${site.ContactUs[0].secondopen}`}
+              </Typography>
+            </Box>
+            <Box sx={{ display: "flex", flexDirection: "column", mt: 8 }}>
+              <Typography variant="info">{`Tel: ${site.ContactUs[0].tel}`}</Typography>
+              <Typography variant="info">{`Email: ${site.ContactUs[0].email}`}</Typography>
+            </Box>
           </Box>
         </Box>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            padding: 1,
-            mt: 2
-          }}
-        >
-          <Typography variant="header"> WE'RE OPEN! </Typography>
-          <Box sx={{display: "flex", flexDirection: "column", mt: 8 }}>
-            <Typography variant="info">
-              {`${firstOpen}`}
-            </Typography>
-            <Typography variant="info">
-              {`${secondOpen}`}
-            </Typography>
-          </Box>
-          <Box sx={{ display: "flex", flexDirection: "column", mt: 8 }}>
-            <Typography variant="info">{`Tel: ${phoneNumber}`}</Typography>
-            <Typography variant="info">{`Email: ${email}`}</Typography>
-          </Box>
-        </Box>
+        {`${site.Menu.map((item) => {
+          return item.category === site.Menu[0].category
+        })}`}
+        <Typography variant="header"> {`${site.Menu}`} </Typography>
       </Box>
     </Box>
   );
