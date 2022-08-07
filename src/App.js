@@ -1,7 +1,6 @@
 import { Typography, Box, TextField, Button } from "@mui/material";
 import { useState } from "react";
 import website from "./website.json";
-console.log(website);
 
 function App() {
   const [site, setSite] = useState(() => {
@@ -20,13 +19,12 @@ function App() {
         flexDirection: "column",
       }}
     >
-      <Box>
+      <Box sx={{overflowY: "auto"}}>
         <Box
           sx={{
             display: "flex",
             justifyContent: "space-around",
             width: "100%",
-            height: "100%",
           }}
         >
           <Box
@@ -75,14 +73,7 @@ function App() {
                 alignItems: "end",
               }}
             >
-              <TextField
-                sx={{ width: 270 }}
-                multiline
-                required
-                rows={3}
-                label="Leave us a message..."
-                variant="standard"
-              ></TextField>
+              <TextField sx={{ width: 270 }} multiline required rows={3} label="Leave us a message..." variant="standard"></TextField>
               <Button sx={{ height: 50 }} variant="contained">
                 Submit
               </Button>
@@ -98,12 +89,8 @@ function App() {
           >
             <Typography variant="header"> WE'RE OPEN! </Typography>
             <Box sx={{ display: "flex", flexDirection: "column", mt: 8 }}>
-              <Typography variant="info">
-                {`${site.ContactUs[0].firstopen}`}
-              </Typography>
-              <Typography variant="info">
-                {`${site.ContactUs[0].secondopen}`}
-              </Typography>
+              <Typography variant="info">{`${site.ContactUs[0].firstopen}`}</Typography>
+              <Typography variant="info">{`${site.ContactUs[0].secondopen}`}</Typography>
             </Box>
             <Box sx={{ display: "flex", flexDirection: "column", mt: 8 }}>
               <Typography variant="info">{`Tel: ${site.ContactUs[0].tel}`}</Typography>
@@ -111,10 +98,36 @@ function App() {
             </Box>
           </Box>
         </Box>
-        {`${site.Menu.map((item) => {
-          return item.category === site.Menu[0].category
-        })}`}
-        <Typography variant="header"> {`${site.Menu}`} </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            width: "100%",
+            m: 1,
+            p: 5,
+          }}
+        >
+          {site.Menu.map((item) => {
+            return (
+              <Box>
+                <Typography variant="header">{item.category}</Typography>
+                <Box sx={{ p: 1 }}>
+                  <Box sx={{ display: "flex", alignItems: "center" }}>
+                    <Typography variant="body1">{item.item}</Typography>
+                    <Typography>.................................................</Typography>
+                    <Typography variant="body1">{`$${item.price}`}</Typography>
+                  </Box>
+                  <Box sx={{ mt: 1 }}>
+                    <Typography variant="body2" color="textSecondary">
+                      {item.description}
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+            );
+          })}
+        </Box>
       </Box>
     </Box>
   );
