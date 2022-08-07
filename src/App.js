@@ -6,6 +6,9 @@ function App() {
   const [site, setSite] = useState(() => {
     return website;
   });
+
+  const categories = [...new Set(site.Menu.map((item) => item.category))];
+
   return (
     <Box
       sx={{
@@ -19,7 +22,7 @@ function App() {
         flexDirection: "column",
       }}
     >
-      <Box sx={{overflowY: "auto"}}>
+      <Box sx={{ overflowY: "auto" }}>
         <Box
           sx={{
             display: "flex",
@@ -108,22 +111,29 @@ function App() {
             p: 5,
           }}
         >
-          {site.Menu.map((item) => {
+          {categories.map((category) => {
+            const itemsInCategory = site.Menu.filter((item) => item.category === category);
             return (
               <Box>
-                <Typography variant="header">{item.category}</Typography>
-                <Box sx={{ p: 1 }}>
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Typography variant="body1">{item.item}</Typography>
-                    <Typography>.................................................</Typography>
-                    <Typography variant="body1">{`$${item.price}`}</Typography>
-                  </Box>
-                  <Box sx={{ mt: 1 }}>
-                    <Typography variant="body2" color="textSecondary">
-                      {item.description}
-                    </Typography>
-                  </Box>
-                </Box>
+                <Typography variant="header">{category}</Typography>
+                {itemsInCategory.map((item) => {
+                  return (
+                    <Box>
+                      <Box sx={{ p: 1 }}>
+                        <Box sx={{ display: "flex", alignItems: "center" }}>
+                          <Typography variant="body1">{item.item}</Typography>
+                          <Typography>.................................................</Typography>
+                          <Typography variant="body1">{`$${item.price}`}</Typography>
+                        </Box>
+                        <Box sx={{ mt: 1 }}>
+                          <Typography variant="body2" color="textSecondary">
+                            {item.description}
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </Box>
+                  );
+                })}
               </Box>
             );
           })}
