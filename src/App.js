@@ -1,4 +1,5 @@
 import { Typography, Box, TextField, Button } from "@mui/material";
+import { display, maxWidth } from "@mui/system";
 import { useState } from "react";
 import website from "./website.json";
 
@@ -76,7 +77,14 @@ function App() {
                 alignItems: "end",
               }}
             >
-              <TextField sx={{ width: 270 }} multiline required rows={3} label="Leave us a message..." variant="standard"></TextField>
+              <TextField
+                sx={{ width: 270 }}
+                multiline
+                required
+                rows={3}
+                label="Leave us a message..."
+                variant="standard"
+              ></TextField>
               <Button sx={{ height: 50 }} variant="contained">
                 Submit
               </Button>
@@ -101,29 +109,39 @@ function App() {
             </Box>
           </Box>
         </Box>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            width: "100%",
-            m: 1,
-            p: 5,
-          }}
-        >
+        <Box sx={{display: "flex",
+                flexDirection: "column",
+                alignItems:"center",
+                mt: 5,
+                width: "100%"
+                }}>          
           {categories.map((category) => {
-            const itemsInCategory = site.Menu.filter((item) => item.category === category);
+            const itemsInCategory = site.Menu.filter(
+              (item) => item.category === category
+            );
             return (
-              <Box>
+              <Box sx={{ 
+                display: "flex",
+                flexDirection: "column",
+                maxWidth: 1000
+              }}>
                 <Typography variant="header">{category}</Typography>
                 {itemsInCategory.map((item) => {
                   return (
                     <Box>
                       <Box sx={{ p: 1 }}>
-                        <Box sx={{ display: "flex", alignItems: "center" }}>
-                          <Typography variant="body1">{item.item}</Typography>
-                          <Typography>.................................................</Typography>
-                          <Typography variant="body1">{`$${item.price}`}</Typography>
+                        <Box sx={{ display: "flex", alignItems: "baseline",}}>
+                          <Typography sx={{ p: 0, mr: 1 }} variant="body1">
+                            {item.item}
+                          </Typography>
+                          <Typography
+                            sx={{ p: 0, m: 0, flex: 1, textOverflow: "clip" , overflow: "hidden", whiteSpace: "nowrap"}}>
+                              . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+                            </Typography>
+                          <Typography
+                            sx={{ p: 0, ml:1 }}
+                            variant="body1"
+                          >{`$${item.price}`}</Typography>
                         </Box>
                         <Box sx={{ mt: 1 }}>
                           <Typography variant="body2" color="textSecondary">
