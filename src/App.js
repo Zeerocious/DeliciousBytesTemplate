@@ -1,16 +1,10 @@
 import { Typography, Box, TextField, Button,} from "@mui/material";
-import { display, maxWidth } from "@mui/system";
-import { useState } from "react";
-import website from "./website.json";
+import website from "./config/website.json";
 import Header from './Header';
 
 function App() {
-  const [site, setSite] = useState(() => {
-    return website;
-  });
 
-  const categories = [...new Set(site.Menu.map((item) => item.category))];
-
+  const categories = [...new Set(website.Menu.map((item) => item.category))];
   return (
     <Box
       sx={{
@@ -24,7 +18,7 @@ function App() {
         flexDirection: "column",
       }}
     >
-      <Header/>
+      <Header website={website}/>
       <Box sx={{ overflowY: "auto" }}>
         
         <Box
@@ -37,11 +31,12 @@ function App() {
           }}
         >
           {categories.map((category) => {
-            const itemsInCategory = site.Menu.filter(
+            const itemsInCategory = website.Menu.filter(
               (item) => item.category === category
             );
             return (
               <Box
+                key={category}
                 sx={{
                   display: "flex",
                   flexDirection: "column",
@@ -51,7 +46,7 @@ function App() {
                 <Typography variant="parent">{category}</Typography>
                 {itemsInCategory.map((item) => {
                   return (
-                    <Box>
+                    <Box key={item.item}>
                       <Box sx={{ p: 1 }}>
                         <Box sx={{ display: "flex", alignItems: "baseline" }}>
                           <Typography sx={{ p: 0 }} variant="child">
@@ -175,12 +170,12 @@ function App() {
           >
             <Typography variant="parent"> WE'RE OPEN! </Typography>
             <Box sx={{ display: "flex", flexDirection: "column", mt: 8 }}>
-              <Typography variant="info">{`${site.ContactUs[0].firstopen}`}</Typography>
-              <Typography variant="info">{`${site.ContactUs[0].secondopen}`}</Typography>
+              <Typography variant="info">{`${website.ContactUs[0].firstopen}`}</Typography>
+              <Typography variant="info">{`${website.ContactUs[0].secondopen}`}</Typography>
             </Box>
             <Box sx={{ display: "flex", flexDirection: "column", mt: 8 }}>
-              <Typography variant="info">{`Tel: ${site.ContactUs[0].tel}`}</Typography>
-              <Typography variant="info">{`Email: ${site.ContactUs[0].email}`}</Typography>
+              <Typography variant="info">{`Tel: ${website.ContactUs[0].tel}`}</Typography>
+              <Typography variant="info">{`Email: ${website.ContactUs[0].email}`}</Typography>
             </Box>
           </Box>
         </Box>
