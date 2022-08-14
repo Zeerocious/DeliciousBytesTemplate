@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { ThemeProvider, createTheme, CssBaseline, responsiveFontSizes } from "@mui/material";
+import { ThemeProvider, createTheme, CssBaseline, responsiveFontSizes,} from "@mui/material";
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -19,14 +19,24 @@ let theme = createTheme({
     }
   },
   palette: {
+    test: {
+      main: '#400CCC',
+      darker: '#140930',
+    },
     mode: "dark",
   },
   typography: {
     header: {
+      fontFamily: "sans-serif",
+      fontWeight: 600,
+      color: "#FFFEFE",
+      textAlign: "left",
+    },
+    parent: {
       fontWeight: 700,
       fontSize: "2rem"
     },
-    subheader: {
+    child: {
       fontWeight: 400,
     },
     info: {

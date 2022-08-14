@@ -1,7 +1,8 @@
-import { Typography, Box, TextField, Button } from "@mui/material";
+import { Typography, Box, TextField, Button, AppBar, Toolbar } from "@mui/material";
 import { display, maxWidth } from "@mui/system";
 import { useState } from "react";
 import website from "./website.json";
+import Header from './Header';
 
 function App() {
   const [site, setSite] = useState(() => {
@@ -24,6 +25,80 @@ function App() {
       }}
     >
       <Box sx={{ overflowY: "auto" }}>
+        <Header/>
+        
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            mt: 5,
+            width: "100%",
+          }}
+        >
+          {categories.map((category) => {
+            const itemsInCategory = site.Menu.filter(
+              (item) => item.category === category
+            );
+            return (
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  maxWidth: 900,
+                }}
+              >
+                <Typography variant="parent">{category}</Typography>
+                {itemsInCategory.map((item) => {
+                  return (
+                    <Box>
+                      <Box sx={{ p: 1 }}>
+                        <Box sx={{ display: "flex", alignItems: "baseline" }}>
+                          <Typography sx={{ p: 0 }} variant="child">
+                            {item.starter}
+                          </Typography>
+                          <Typography variant="child">
+                            {item.item}
+                          </Typography>
+                          <Typography
+                            sx={{
+                              p: 0,
+                              m: 0,
+                              flex: 1,
+                              textOverflow: "clip",
+                              overflow: "hidden",
+                              whiteSpace: "nowrap",
+                            }}
+                          >
+                            . . . . . . . . . . . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . . . . . . . . . . . .
+                            . .
+                          </Typography>
+                          <Typography
+                            sx={{ p: 0, ml: 1 }}
+                            variant="body1"
+                          >{`$${item.price}`}</Typography>
+                        </Box>
+                        <Box sx={{ mt: 1 }}>
+                          <Typography variant="body2" color="textSecondary">
+                            {item.description}
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </Box>
+                  );
+                })}
+              </Box>
+            );
+          })}
+        </Box>
         <Box
           sx={{
             display: "flex",
@@ -42,8 +117,8 @@ function App() {
               mt: 2,
             }}
           >
-            <Typography variant="header"> CONTACT US </Typography>
-            <Typography sx={{ mt: 2 }} variant="subheader">
+            <Typography variant="parent"> CONTACT US </Typography>
+            <Typography sx={{ mt: 2 }} variant="child">
               Drop us a line and we'll get back to you
             </Typography>
             <Box
@@ -98,7 +173,7 @@ function App() {
               mt: 2,
             }}
           >
-            <Typography variant="header"> WE'RE OPEN! </Typography>
+            <Typography variant="parent"> WE'RE OPEN! </Typography>
             <Box sx={{ display: "flex", flexDirection: "column", mt: 8 }}>
               <Typography variant="info">{`${site.ContactUs[0].firstopen}`}</Typography>
               <Typography variant="info">{`${site.ContactUs[0].secondopen}`}</Typography>
@@ -108,53 +183,6 @@ function App() {
               <Typography variant="info">{`Email: ${site.ContactUs[0].email}`}</Typography>
             </Box>
           </Box>
-        </Box>
-        <Box sx={{display: "flex",
-                flexDirection: "column",
-                alignItems:"center",
-                mt: 5,
-                width: "100%"
-                }}>          
-          {categories.map((category) => {
-            const itemsInCategory = site.Menu.filter(
-              (item) => item.category === category
-            );
-            return (
-              <Box sx={{ 
-                display: "flex",
-                flexDirection: "column",
-                maxWidth: 1000
-              }}>
-                <Typography variant="header">{category}</Typography>
-                {itemsInCategory.map((item) => {
-                  return (
-                    <Box>
-                      <Box sx={{ p: 1 }}>
-                        <Box sx={{ display: "flex", alignItems: "baseline",}}>
-                          <Typography sx={{ p: 0, mr: 1 }} variant="body1">
-                            {item.item}
-                          </Typography>
-                          <Typography
-                            sx={{ p: 0, m: 0, flex: 1, textOverflow: "clip" , overflow: "hidden", whiteSpace: "nowrap"}}>
-                              . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-                            </Typography>
-                          <Typography
-                            sx={{ p: 0, ml:1 }}
-                            variant="body1"
-                          >{`$${item.price}`}</Typography>
-                        </Box>
-                        <Box sx={{ mt: 1 }}>
-                          <Typography variant="body2" color="textSecondary">
-                            {item.description}
-                          </Typography>
-                        </Box>
-                      </Box>
-                    </Box>
-                  );
-                })}
-              </Box>
-            );
-          })}
         </Box>
       </Box>
     </Box>
