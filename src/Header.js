@@ -5,14 +5,14 @@ export default function Header() {
       return <Toolbar>{femmecubatorLogo}</Toolbar>;
     };
     const femmecubatorLogo = (
-        <Typography sx={{p:6}} variant="header" component="h1">
+        <Typography  variant="header" component="h1">
           Femmecubator
         </Typography>
       );
 
     return (
         <header>
-          <AppBar color= "test" enableColorOnDark> {displayDesktop()}
+          <AppBar sx={{position: "relative"}}color= "primary" enableColorOnDark> {displayDesktop()}
           </AppBar>
         </header>
       );

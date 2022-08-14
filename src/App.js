@@ -1,4 +1,4 @@
-import { Typography, Box, TextField, Button, AppBar, Toolbar } from "@mui/material";
+import { Typography, Box, TextField, Button,} from "@mui/material";
 import { display, maxWidth } from "@mui/system";
 import { useState } from "react";
 import website from "./website.json";
@@ -24,8 +24,8 @@ function App() {
         flexDirection: "column",
       }}
     >
+      <Header/>
       <Box sx={{ overflowY: "auto" }}>
-        <Header/>
         
         <Box
           sx={{
