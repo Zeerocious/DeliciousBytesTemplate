@@ -7,6 +7,8 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import 'simplebar/dist/simplebar.min.css';
+
 
 let theme = createTheme({
   components: {
@@ -16,20 +18,25 @@ let theme = createTheme({
                 fontWeight: 300,
             }
         }
-    }
+    },
   },
+  
   palette: {
-    test: {
-      main: '#400CCC',
+    primary: {
+      main: '#AC7DE4',
       darker: '#140930',
+    },
+    secondary: {
+      main: '#81C2B1',
+      darker: '#123123'
     },
     mode: "dark",
   },
   typography: {
     header: {
+      fontSize: "1.5rem",
       fontFamily: "sans-serif",
       fontWeight: 600,
-      color: "#FFFEFE",
       textAlign: "left",
     },
     parent: {

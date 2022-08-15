@@ -1,30 +1,70 @@
-import {Box} from "@mui/material";
-import website from "./config/website.json";
-import Header from "./Header";
-import Menu from "./Menu";
+import { styled } from "@mui/material";
+import { Route, BrowserRouter, Routes } from "react-router-dom";
 import ContactUs from "./ContactUs";
+import Header from "./Header";
+import Home from "./Home";
+import Menu from "./Menu";
+import NotFound from "./NotFound";
 
-function App() {
+export default function App() {
   return (
-    <Box
-      sx={{
-        position: "absolute",
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0,
-        overflow: "hidden",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <Header website={website} />
-      <Box sx={{ overflowY: "auto" }}>
-        <Menu website={website} />
-        <ContactUs website={website} />
-      </Box>
-    </Box>
+    <BrowserRouter>
+      <Parent>
+        <Routes>
+          <Route path="*" element={<NotFound />} />
+          <Route
+            exact
+            path="/"
+            element={
+              <>
+                <Header />
+                <Home />
+              </>
+            }
+          />
+          <Route
+            exact
+            path="/home"
+            element={
+              <>
+                <Header/>
+                <Home/>
+              </>
+            }
+          />
+          <Route
+                exact
+                path="/menu"
+                element={
+                  <>
+                    <Header/>
+                    <Menu/>
+                  </>
+                }
+          />
+          <Route
+                exact
+                path="/contact"
+                element={
+                  <>
+                    <Header/>
+                    <ContactUs/>
+                  </>
+                }
+          />
+        </Routes>
+      </Parent>
+    </BrowserRouter>
   );
 }
 
-export default App;
+const Parent = styled((props) => <div {...props} />)`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+`;
