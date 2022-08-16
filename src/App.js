@@ -5,8 +5,24 @@ import Header from "./Header";
 import Home from "./Home";
 import Menu from "./Menu";
 import NotFound from "./NotFound";
+import WebFont from "webfontloader";
+import React, { useEffect } from "react";
+import website from "./config/website.json";
 
 export default function App() {
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: [
+          website.Font[0].family,
+          website.Font[1].family,
+          website.Font[2].family,
+          website.Font[3].family,
+        ],
+      },
+    });
+  }, []);
+
   return (
     <BrowserRouter>
       <Parent>
@@ -27,30 +43,30 @@ export default function App() {
             path="/home"
             element={
               <>
-                <Header/>
-                <Home/>
+                <Header />
+                <Home />
               </>
             }
           />
           <Route
-                exact
-                path="/menu"
-                element={
-                  <>
-                    <Header/>
-                    <Menu/>
-                  </>
-                }
+            exact
+            path="/menu"
+            element={
+              <>
+                <Header />
+                <Menu />
+              </>
+            }
           />
           <Route
-                exact
-                path="/contact"
-                element={
-                  <>
-                    <Header/>
-                    <ContactUs/>
-                  </>
-                }
+            exact
+            path="/contact"
+            element={
+              <>
+                <Header />
+                <ContactUs />
+              </>
+            }
           />
         </Routes>
       </Parent>

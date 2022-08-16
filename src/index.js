@@ -2,12 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import website from "./config/website.json"
 import { ThemeProvider, createTheme, CssBaseline, responsiveFontSizes,} from "@mui/material";
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import 'simplebar/dist/simplebar.min.css';
+
+//https://fonts.google.com/?preview.size=20
+
 
 
 let theme = createTheme({
@@ -34,21 +38,25 @@ let theme = createTheme({
   },
   typography: {
     header: {
-      fontSize: "1.5rem",
-      fontFamily: "sans-serif",
-      fontWeight: 600,
-      textAlign: "left",
+      fontFamily: website.Font[0].family,
+      fontSize: website.Font[0].size,
+      fontWeight: website.Font[0].bold,
     },
     parent: {
-      fontWeight: 700,
-      fontSize: "2rem"
+      fontFamily: website.Font[1].family,
+      fontSize: website.Font[1].size,
+      fontWeight: website.Font[1].bold,
     },
     child: {
-      fontWeight: 400,
+      fontFamily: website.Font[2].family,
+      fontSize: website.Font[2].size,
+      fontWeight: website.Font[2].bold,
     },
     info: {
+      fontFamily: website.Font[3].family,
+      fontSize: website.Font[3].size,
+      fontWeight: website.Font[3].bold,
       marginTop: "0.5rem",
-      fontWeight: 300,
     }
   }
 });
