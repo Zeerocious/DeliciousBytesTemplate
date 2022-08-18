@@ -2,38 +2,39 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import website from "./config/website.json"
-import { ThemeProvider, createTheme, CssBaseline, responsiveFontSizes,} from "@mui/material";
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
-import 'simplebar/dist/simplebar.min.css';
+import website from "./config/website.json";
+import {
+  ThemeProvider,
+  createTheme,
+  CssBaseline,
+  responsiveFontSizes,
+} from "@mui/material";
+import "simplebar/dist/simplebar.min.css";
 
 //https://fonts.google.com/?preview.size=20
-
-
 
 let theme = createTheme({
   components: {
     MuiInputBase: {
-        styleOverrides: {
-            input: {
-                fontWeight: 300,
-            }
-        }
+      styleOverrides: {
+        input: {
+          fontWeight: 300,
+        },
+      },
     },
   },
-  
+
   palette: {
     primary: {
-      main: '#AC7DE4',
-      darker: '#140930',
+      main: website.Color[0].main,
     },
     secondary: {
-      main: '#81C2B1',
-      darker: '#123123'
+      main: website.Color[1].main,
     },
+    tertiary: { 
+      main: website.Color[2].main,
+    },
+
     mode: "dark",
   },
   typography: {
@@ -57,8 +58,8 @@ let theme = createTheme({
       fontSize: website.Font[3].size,
       fontWeight: website.Font[3].bold,
       marginTop: "0.5rem",
-    }
-  }
+    },
+  },
 });
 theme = responsiveFontSizes(theme);
 

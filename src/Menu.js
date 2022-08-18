@@ -64,7 +64,7 @@ export default function Menu() {
                         >{`$${item.price}`}</Typography>
                       </Box>
                       <Box sx={{ mt: 1 }}>
-                        <Typography variant="info" color="textSecondary">
+                        <Typography variant="info" sx={{color: "tertiary.main"}}>
                           {item.description}
                         </Typography>
                       </Box>

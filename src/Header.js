@@ -17,7 +17,7 @@ export default function Header() {
           <Typography variant="h2">{website.Info[0].name}</Typography>
           <Box sx={{ display: "flex" }}>
             <Button href="/home" sx={{ mr: 1 }} size="large">
-              <Typography color="primary" variant="header">
+              <Typography sx={{color: "tertiary.main"}} variant="header">
                 HOME
               </Typography>
             </Button>
